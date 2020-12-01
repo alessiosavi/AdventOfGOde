@@ -22,12 +22,25 @@ func Problem1() {
 		data[i] = atoi
 	}
 
+problem1:
 	for i := 0; i < len(data); i++ {
 		for j := i + 1; j < len(data); j++ {
 			if data[i]+data[j] == 2020 {
 				fmt.Println(data[i] * data[j])
-				return
+				continue problem1
 			}
 		}
 	}
+
+	for i := 0; i < len(data); i++ {
+		for j := i + 1; j < len(data); j++ {
+			for k := j + 1; k < len(data); k++ {
+				if data[i]+data[j]+data[k] == 2020 {
+					fmt.Println(data[i] * data[j] * data[k])
+					return
+				}
+			}
+		}
+	}
+
 }
