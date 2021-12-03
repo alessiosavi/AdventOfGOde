@@ -5,14 +5,14 @@
 package day1
 
 import (
-	"fmt"
 	fileutils "github.com/alessiosavi/GoGPUtils/files"
 	stringutils "github.com/alessiosavi/GoGPUtils/string"
+	"log"
 	"strconv"
 )
 
 func Problem1() {
-	rawData := fileutils.ReadFileInArray("Day1/day1.txt")
+	rawData := fileutils.ReadFileInArray("data/day1.txt")
 	data := make([]int, len(rawData))
 	for i := range rawData {
 		atoi, err := strconv.Atoi(stringutils.Trim(rawData[i]))
@@ -22,25 +22,33 @@ func Problem1() {
 		data[i] = atoi
 	}
 
-problem1:
-	for i := 0; i < len(data); i++ {
-		for j := i + 1; j < len(data); j++ {
-			if data[i]+data[j] == 2020 {
-				fmt.Println(data[i] * data[j])
-				continue problem1
-			}
-		}
-	}
+	res1 := core1(data)
 
+	res2 := core2(data)
+
+	log.Println(res1, res2)
+}
+
+func core2(data []int) int {
 	for i := 0; i < len(data); i++ {
 		for j := i + 1; j < len(data); j++ {
 			for k := j + 1; k < len(data); k++ {
 				if data[i]+data[j]+data[k] == 2020 {
-					fmt.Println(data[i] * data[j] * data[k])
-					return
+					return data[i] * data[j] * data[k]
 				}
 			}
 		}
 	}
+	return 0
+}
 
+func core1(data []int) int {
+	for i := 0; i < len(data); i++ {
+		for j := i + 1; j < len(data); j++ {
+			if data[i]+data[j] == 2020 {
+				return data[i] * data[j]
+			}
+		}
+	}
+	return 0
 }

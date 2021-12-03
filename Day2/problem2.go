@@ -1,7 +1,6 @@
 package Day2
 
 import (
-	"fmt"
 	fileutils "github.com/alessiosavi/GoGPUtils/files"
 	"strconv"
 	"strings"
@@ -14,14 +13,14 @@ type Datastructure struct {
 	Password string
 }
 
-func Problem2() {
+func Problem2() (int, int) {
 
 	var (
 		correct1, correct2 = 0, 0
 		min, max           = 0, 0
 		err                error
 	)
-	rawData := fileutils.ReadFileInArray("Day2/day2.txt")
+	rawData := fileutils.ReadFileInArray("data/day2.txt")
 
 	for _, data := range rawData {
 		if strings.Count(data, " ") != 2 {
@@ -48,6 +47,5 @@ func Problem2() {
 			correct2++
 		}
 	}
-	fmt.Println(correct1)
-	fmt.Println(correct2)
+	return correct1, correct2
 }
