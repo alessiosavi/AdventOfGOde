@@ -2,6 +2,7 @@ package Day2
 
 import (
 	fileutils "github.com/alessiosavi/GoGPUtils/files"
+	"log"
 	"strconv"
 	"strings"
 )
@@ -13,13 +14,13 @@ type Datastructure struct {
 	Password string
 }
 
-func Problem2() (int, int) {
+func Problem() {
 
 	var (
-		correct1, correct2 = 0, 0
-		min, max           = 0, 0
-		err                error
+		correct1, correct2, min, max = 0, 0, 0, 0
+		err                          error
 	)
+	log.Println("========== Problem 2 ==========")
 	rawData := fileutils.ReadFileInArray("data/day2.txt")
 
 	for _, data := range rawData {
@@ -47,5 +48,8 @@ func Problem2() (int, int) {
 			correct2++
 		}
 	}
-	return correct1, correct2
+
+	log.Println("First solution:", correct1)
+	log.Println("Second solution:", correct2)
+	return
 }

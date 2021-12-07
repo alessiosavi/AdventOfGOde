@@ -6,7 +6,8 @@ import (
 	"strings"
 )
 
-func Problem3() {
+func Problem() {
+	log.Println("========== Problem 3 ==========")
 	rawData, err := ioutil.ReadFile("data/day3.txt")
 	if err != nil {
 		panic(err)
@@ -25,15 +26,18 @@ func Problem3() {
 		total *= res[i]
 	}
 	log.Println("Second solution:", total)
-	log.Println(res)
 	return
 }
 
 func traverse(data []string, x_step, y_step int) int {
-	var tree int = 0
-	var x = 0
+	var tree = 0
+	var x, y = 0, 0
 	var step = len(data[0])
-	for y := 1; y < len(data); y += y_step {
+	for {
+		y += y_step
+		if y >= len(data) {
+			break
+		}
 		x += x_step
 		if x >= step {
 			x = x % step

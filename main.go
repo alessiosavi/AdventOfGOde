@@ -1,10 +1,15 @@
 package main
 
 import (
-	"github.com/alessiosavi/AdventOfGOde/Day3"
+	"log"
 )
 
 func main() {
-
-	Day3.Problem3()
+	log.SetFlags(log.LstdFlags | log.Lmicroseconds)
+	//Day1.Problem()
+	//Day2.Problem()
+	//Day3.Problem()
+	//Day4.Problem()
+	//Day5.Problem()
+	//Day6.Problem()
 }

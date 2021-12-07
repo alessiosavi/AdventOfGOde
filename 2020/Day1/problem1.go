@@ -2,7 +2,7 @@
 // Multiplying them together produces 1721 * 299 = 514579, so the correct answer is 514579.
 // Of course, your expense report is much larger.
 // Find the two entries that sum to 2020; what do you get if you multiply them together?
-package day1
+package Day1
 
 import (
 	fileutils "github.com/alessiosavi/GoGPUtils/files"
@@ -11,7 +11,8 @@ import (
 	"strconv"
 )
 
-func Problem1() {
+func Problem() {
+	log.Println("========== Problem 1 ==========")
 	rawData := fileutils.ReadFileInArray("data/day1.txt")
 	data := make([]int, len(rawData))
 	for i := range rawData {
@@ -22,11 +23,8 @@ func Problem1() {
 		data[i] = atoi
 	}
 
-	res1 := core1(data)
-
-	res2 := core2(data)
-
-	log.Println(res1, res2)
+	log.Println("First solution:", core1(data))
+	log.Println("Second solution:", core2(data))
 }
 
 func core2(data []int) int {
